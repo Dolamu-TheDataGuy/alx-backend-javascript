@@ -1,35 +1,16 @@
-// eslint-disable-next-line
-import Currency from "./3-currency";
-
-export default class Pricing {
-  constructor(amount, currency) {
-    this.amount = amount;
-    this.currency = currency;
+export default class Building {
+  constructor(sqft) {
+    this._sqft = sqft;
+    if (this.constructor !== Building && this.evacuationWarningMessage === undefined) {
+      throw Error('Class extending Building must override evacuationWarningMessage');
+    }
   }
 
-  // amount
-  get amount() {
-    return this._amount;
+  get sqft() {
+    return this._sqft;
   }
 
-  set amount(value) {
-    this._amount = value;
-  }
-
-  // currency
-  get currency() {
-    return this._currency;
-  }
-
-  set currency(value) {
-    this._currency = value;
-  }
-
-  displayFullPrice() {
-    return `${this.amount} ${this.currency.displayFullCurrency()}`;
-  }
-
-  static convertPrice(amount, conversionRate) {
-    return amount * conversionRate;
+  set sqft(value) {
+    this._sqft = value;
   }
 }
